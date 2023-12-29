@@ -1,11 +1,12 @@
 `timescale 1ns / 1ps
+`include "compare_4.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
 // Create Date: 2023/12/25 15:13:23
 // Design Name: 
-// Module Name: DATCOMPARE_8
+// Module Name: compae_8
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module DATCOMPARE_8(
+module compare_8(
 	input [7:0] iData_a,
 	input [7:0] iData_b,
 	output [2:0] oData
@@ -37,7 +38,7 @@ module DATCOMPARE_8(
 	 assign iData_b_l=iData_b[3:0];
 	 assign iData_b_h=iData_b[7:4];
 	 
-	DataCompare4 DataCompare_l(iData_a_l,iData_b_l,3'b000,oData_1);
-	DataCompare4 DataCompare_h(iData_a_h,iData_b_h,oData_1,oData);
+	compare_4 compare_l(iData_a_l,iData_b_l,3'b000,oData_1);
+	compare_4 compare_h(iData_a_h,iData_b_h,oData_1,oData);
 
 endmodule

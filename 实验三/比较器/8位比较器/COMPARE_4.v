@@ -5,7 +5,7 @@
 // 
 // Create Date: 2023/12/25 15:11:43
 // Design Name: 
-// Module Name: COMPARE_4
+// Module Name: compare_4
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module DataCompare4(
+module compare_4(
 	input [3:0] iData_a,
 	input [3:0] iData_b, 
 	input [2:0] iData,
