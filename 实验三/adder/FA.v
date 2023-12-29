@@ -24,8 +24,8 @@ module FA(
     input iA,
     input iB,
     input iC,
-    input oC,
-    input oS
+    output oC,
+    output oS
     );
     assign {oC,oS} = iA+iB+iC;
 endmodule
