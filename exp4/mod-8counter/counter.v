@@ -1,4 +1,7 @@
 `timescale 1ns / 1ps
+`include "JK.v"
+`include "display7.v"
+
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -45,7 +48,7 @@ module counter(
     assign display[1] = Q1;
     assign display[2] = Q2;
     assign display[3] = 1'b0;
-    assign oQ = display;
+    assign oQ = display[2:0];
     display7 _display7(.iData(display),.oData(oDisplay));
 endmodule
 

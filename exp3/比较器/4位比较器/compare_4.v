@@ -26,7 +26,6 @@ module compare_4(
     input [2:0] iData,
     output [2:0] oData
     );
-    wire [2:0] oData;
     reg eq,gt,lt;
     assign oData[2]=gt;
     assign oData[1]=lt;

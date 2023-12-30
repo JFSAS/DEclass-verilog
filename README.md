@@ -5,3 +5,4 @@
 指令来去除所有子文件夹中的ignore文件
 前半部分得到所有ignore文件的相对地址，输出给到git rm
 xargs -0 git rm --cached 会接收 git ls-files 命令的输出，并使用 git rm --cached 命令来停止追踪这些文件。-0 选项告诉 xargs 它的输入使用 null 字符分隔。
+gtkwave不能存在中文路径
