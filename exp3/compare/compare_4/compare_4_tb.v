@@ -70,4 +70,9 @@ module testbench;
             $display("Test failed: expected %b, got %b", expected_value, oData);
         end
     end
+    //产生wave
+    initial begin
+        $dumpfile("compare_4_tb.vcd");
+        $dumpvars(0, testbench);
+    end
 endmodule

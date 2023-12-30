@@ -6,16 +6,20 @@ module counter_tb;
     wire [6:0] oDisplay;
     counter counter_1(.CLK(CLK),.rst_n(rst_n),.oQ(oQ),.oDisplay(oDisplay));
     integer i = 0;
-    initial
+    reg [31:0] cnt = 0;
+    reg f1;
+    
+    initial 
         begin
-            forever
-            begin
+            for (i=0;i<10;i=i+1)
+                begin
+                    CLK = ~CLK;
+                    cnt = cnt +1;
+                    #100;
+                    $display("cnt=%d, output = %d,CLK = %d,odisplay = %d",cnt,oQ,CLK,oDisplay);
+                end
                 
-                #1000000000;
-                CLK=~CLK;
-                $display("%d : %b",i,oQ);
-                i= i+1;
-            end
         end
+    
 
 endmodule
