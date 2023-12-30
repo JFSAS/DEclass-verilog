@@ -30,31 +30,36 @@ module divider(
     assign o_CLK = o_CLK_1;
     reg [25:0] cnt = 0;
     always@(posedge CLK) 
-        begin
-            cnt = cnt+1 ;
-        end
-    always@(posedge CLK) 
        begin;
+            cnt = cnt+1 ;
            case(contral) 
                 2'b00 : 
                     begin 
-                        if(cnt[25]==1) 
-                            o_CLK_1 =~o_CLK_1; 
+                        if(cnt[0]==1) 
+                            o_CLK_1 =1;
+                        else
+                            o_CLK_1 = 0; 
                     end
                 2'b01 :
                     begin 
-                        if(cnt[24]==1)
-                            o_CLK_1 = ~o_CLK_1;
+                        if(cnt[23]==1)
+                            o_CLK_1 = 1;
+                        else
+                            o_CLK_1 = 0;
                     end
                 2'b10:
                     begin
-                        if(cnt[23] == 1)
-                            o_CLK_1 = ~o_CLK_1; 
+                        if(cnt[21] == 1)
+                            o_CLK_1 = 1; 
+                        else
+                            o_CLK_1 = 0;
                     end
                 2'b11:
                     begin
-                        if(cnt[22] == 1)
-                            o_CLK_1 = ~o_CLK_1 ;
+                        if(cnt[10] == 1)
+                            o_CLK_1 = 1 ;
+                        else
+                            o_CLK_1 = 0;
                     end
                default :
                         o_CLK_1 = 0;

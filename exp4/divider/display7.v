@@ -22,7 +22,7 @@
 
 module display7(
     input [3:0] iData,
-    input [6:0] oData
+    output [6:0] oData
     );
     reg [6:0]tData ;
     assign oData = tData;
