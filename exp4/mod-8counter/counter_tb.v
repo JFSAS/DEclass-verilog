@@ -4,22 +4,31 @@ module counter_tb;
     reg CLK=0,rst_n=1;
     wire [2:0] oQ;
     wire [6:0] oDisplay;
-    counter counter_1(.CLK(CLK),.rst_n(rst_n),.oQ(oQ),.oDisplay(oDisplay));
-    integer i = 0;
-    reg [31:0] cnt = 0;
-    reg f1;
-    
+    wire f1;
+    counter counter_1(.CLK(CLK),.rst_n(rst_n),.oQ(oQ),.oDisplay(oDisplay),.f1(f1));
+    initial 
+        begin 
+            CLK = 0;
+            forever 
+                begin
+                    #10;
+                    CLK = ~CLK;
+                end
+        end
     initial 
         begin
-            for (i=0;i<10;i=i+1)
-                begin
-                    CLK = ~CLK;
-                    cnt = cnt +1;
-                    #100;
-                    $display("cnt=%d, output = %d,CLK = %d,odisplay = %d",cnt,oQ,CLK,oDisplay);
-                end
-                
+            rst_n = 1;
+            #10;
+            rst_n = 0;
+            #10;
+            rst_n = 1;
+            #5000;
+            $finish;
         end
-    
+    initial
+        begin
+            $dumpfile("counter.vcd");
+            $dumpvars(0,counter_tb);
+        end
 
 endmodule

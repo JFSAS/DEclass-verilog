@@ -27,19 +27,13 @@ module JK(
     input rst_n,
     output  reg Q
     );
-    always @(posedge CLK or negedge rst_n)
+
+    always @(posedge CLK ,negedge rst_n)
         begin
             
            if(!rst_n)
-                Q<=1'b0;
+               Q <= 1'b0;
            else
-              case({J,K})
-                 2'b00: Q<=Q;
-                 2'b01:Q<=1'b0;
-                 2'b10:Q<=1'b1;
-                 2'b11:Q<=~Q;
-                 default : Q<=1'b0;
-               endcase
-            $display("JK : Q=%b,J = %b,k=%b,rst_n= %b",Q,J,K,rst_n);
+               Q <= (J&(~Q))|((~K)&Q);
          end
 endmodule
