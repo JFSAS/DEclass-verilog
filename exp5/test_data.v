@@ -9,7 +9,7 @@ module testbench;
     wire [3:0] hour_1;
     wire [3:0] hour_2;
 
-    digitial_data _digitial_data(.clk(clk),.rst_n(rst_n),.sec_1(sec_1),.sec_2(sec_2),.min_1(min_1),.min_2(min_2),.hour_1(hour_1),.hour_2(hour_2));
+    digital_data _digital_data(.clk(clk),.rst_n(rst_n),.sec_1(sec_1),.sec_2(sec_2),.min_1(min_1),.min_2(min_2),.hour_1(hour_1),.hour_2(hour_2));
 
     initial 
         begin

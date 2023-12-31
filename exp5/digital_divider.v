@@ -5,7 +5,7 @@
 // 
 // Create Date: 2023/12/26 10:52:05
 // Design Name: 
-// Module Name: divider
+// Module Name: digitial_divider
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,49 +20,49 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module divider(
+module digital_divider(
     input [1:0] contral,
     input clk,
     output o_clk
     );
-    reg o_CLK_1 = 1'b0;
+    reg o_clk_1 = 1'b0;
     
-    assign o_CLK = o_CLK_1;
+    assign o_clk = o_clk_1;
     reg [25:0] cnt = 0;
-    always@(posedge CLK) 
+    always@(posedge clk) 
        begin;
             cnt = cnt+1 ;
            case(contral) 
                 2'b00 : 
                     begin 
-                        if(cnt[24]==1) 
-                            o_CLK_1 =1;
+                        if(cnt[4]==1) 
+                            o_clk_1 =1;
                         else
-                            o_CLK_1 = 0; 
+                            o_clk_1 = 0; 
                     end
                 2'b01 :
                     begin 
-                        if(cnt[23]==1)
-                            o_CLK_1 = 1;
+                        if(cnt[9]==1)
+                            o_clk_1 = 1;
                         else
-                            o_CLK_1 = 0;
+                            o_clk_1 = 0;
                     end
                 2'b10:
                     begin
-                        if(cnt[22] == 1)
-                            o_CLK_1 = 1; 
+                        if(cnt[8] == 1)
+                            o_clk_1 = 1; 
                         else
-                            o_CLK_1 = 0;
+                            o_clk_1 = 0;
                     end
                 2'b11:
                     begin
-                        if(cnt[21] == 1)
-                            o_CLK_1 = 1 ;
+                        if(cnt[7] == 1)
+                            o_clk_1 = 1 ;
                         else
-                            o_CLK_1 = 0;
+                            o_clk_1 = 0;
                     end
                default :
-                        o_CLK_1 = 0;
+                        o_clk_1 = 0;
             endcase
        end
 endmodule

@@ -5,7 +5,7 @@
 //时间计数器产生模块
 //需要sec，min，hour三个输出
 //输入有clk，rst
-module digitial_data(
+module digital_data(
     input                  clk    ,        // 时钟信号
     input                  rst_n  ,        // 复位信号
     output   [3:0]      sec_1    ,        // 秒1

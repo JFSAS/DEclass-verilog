@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
  //数码管显示模块
-module digital_tube_display(
+module digital_display(
    input clk,
    input rst_n,
    input [3:0] hex0, //第一个数码管显示的数字
@@ -10,20 +10,30 @@ module digital_tube_display(
    input [3:0] hex4,
    input [3:0] hex5,
    output reg [5:0] an,   //数码管选择
-   output reg [7:0] sseg  //共阴极数码管信号
+   output reg [7:0] sseg //共阴极数码管信号
    );
    reg [3:0] hex_in; //进入的数字
-   localparam N = 17;//数码管分频
+   localparam N = 3;//数码管分频
    reg [N-1:0] regN; 
    
    
    always@(posedge clk)
    begin
-   		regN <= regN + 1'b1;
-   		if (regN[N-1:N-3] == 3'b110) regN[N-1:N-3] <= 3'b000;//跳过110，111的情况
+		if(rst_n == 0)
+			begin 
+				regN <= 0;
+				an <= 0;
+				hex_in <= 0;
+				sseg[7] <=0;
+			end
+		else
+			begin 
+   				if (regN[N-1:N-3] == 3'b110) regN[N-1:N-3] <= 3'b000;//跳过110，111的情况
+				else regN <= regN + 1;
+			end
    end
 
-   always@ *
+   always@(*)
    begin
    	case(regN[N-1:N-3])//使用分频信号的高三位作为数码管选择信号
    	3'b000:begin
