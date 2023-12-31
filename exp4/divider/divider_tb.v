@@ -49,7 +49,7 @@ module counter_tb;
         end
     initial
         begin
-            $dumpfile("counter_10_tb.vcd");
+            $dumpfile("divider.vcd");
             $dumpvars(0,counter_tb);
         end
 endmodule
